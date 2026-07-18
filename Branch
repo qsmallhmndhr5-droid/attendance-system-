@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>نظام تسجيل الحضور</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#eeeeee;
+    text-align:center;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.box{
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:10px;
+}
+
+input{
+    width:80%;
+    padding:10px;
+    margin:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid black;
+    padding:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>نظام تسجيل الحضور</h1>
+
+
+<!-- شاشة تسجيل الحضور -->
+
+<div class="box">
+
+<h2>شاشة تسجيل الحضور</h2>
+
+<input id="name" type="text" placeholder="اسم الطالب">
+
+<br>
+
+<input id="id" type="text" placeholder="الرقم الجامعي">
+
+<br><br>
+
+<button onclick="attendance()">تسجيل الحضور</button>
+
+</div>
+
+
+
+<!-- شاشة ليدر الدفعة -->
+
+<div class="box">
+
+<h2>شاشة ليدر الدفعة</h2>
+
+<table>
+
+<tr>
+<th>اسم الطالب</th>
+<th>الرقم الجامعي</th>
+</tr>
+
+<tbody id="students">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+
+<!-- شاشة مدير النظام -->
+
+<div class="box">
+
+<h2>شاشة مدير النظام</h2>
+
+<p>عدد الطلاب الحاضرين:</p>
+
+<h1 id="count">0</h1>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+let count = 0;
+
+
+function attendance(){
+
+let name = document.getElementById("name").value;
+
+let id = document.getElementById("id").value;
+
+
+if(name=="" || id==""){
+
+alert("ادخل البيانات");
+
+return;
+
+}
+
+
+document.getElementById("students").innerHTML +=
+
+"<tr><td>"+name+"</td><td>"+id+"</td></tr>";
+
+
+count++;
+
+
+document.getElementById("count").innerHTML=count;
+
+
+document.getElementById("name").value="";
+
+document.getElementById("id").value="";
+
+
+alert("تم تسجيل الحضور");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
